@@ -15,6 +15,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: stg
+    env:
+      ENV_SECRET: ${{ secrets.ONE }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -23,13 +25,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        env:
-          environment_secret: ${{ secrets.ONE }}
-        run: echo "ONE is $environment_secret"
+        run: echo "ONE is $ENV_SECRET"
       - name: Run a one-line script
-        env:
-          environment_secret: ${{ secrets.ONE }}
-        run: echo "ONE is $environment_secret"
+        run: echo "ONE is $ENV_SECRET"
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
